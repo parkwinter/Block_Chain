@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>중 GO CAR</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+          <h1 class="text-center">중 GO CAR</h1>
+          <hr/>
+          <br/>
+        </div>
+      </div>
+
+      <div id="events">
+        <button class="btn btn-info btn-register" 
+        type="button" 
+        data-toggle="modal" 
+        data-target="#registerModal"> <!-- 밑에 id와 같아야해! -->
+        등록하기
+        </button>
+        <h3 class="text-center">거래 현황</h3>
+        <hr/>
+    </div>
+      
+      <div class="row" id="list">
+        <h3 class="text-center">매물 리스트</h3>
+        <hr/>
+      </div>
+    </div> 
+    
+    <div id="template" style="display: none;">
+      <div class="col-sm-6 col-mmd-4 col-lg-3">
+        <div class="panel panel-success panel-realEstate">
+          <div class="panel-heading">
+            <h3 class="panel-title"></h3>
+          </div>
+          <div class="panel-body">
+            <img style="width: 100%;" src="">
+            <br/> <br/>
+            <strong>아이디</strong>: <span class="id"></span><br/>
+            <strong>종류</strong>: <span class="kind1"></span><br/>
+            <strong>연식</strong>: <span class="year1"></span><br/>            
+            <strong>주행</strong>: <span class="distance1"></span><br/>
+            <strong>배기량</strong>: <span class="cc1"></span><br/>
+            <strong>변속</strong>: <span class="change1"></span><br/>
+            <strong>색상</strong>: <span class="color1"></span><br/>
+            <strong>연료</strong>: <span class="fuel1"></span><br/>
+            <strong>압류저당</strong>: <span class="y11"></span><br/>
+            <strong>사고유무</strong>: <span class="y21"></span><br/>
+            <strong>가격(ETH)</strong>: <span class="price"></span><br/><br/>
+            <button class="btn btn-info btn-buy"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#buyModal">
+                    구입
+            </button> 
+            <button class="btn btn-info btn-buyerInfo"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#buyerInfoModal"
+                    style="display: none;">
+                    구입자 정보
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" tabindex="-1" role="dialog" id="buyModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">구입자 정보</h4>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="id" />
+            <input type="hidden" id="price" />
+            <input type="text" class="form-control" id="name" placeholder="이름" /><br/>
+            <input type="number" class="form-control" id="age" placeholder="나이" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+            <button type="button" class="btn btn-primary" onclick="App.buyRealEstate(); return false;">제출</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="buyerInfoModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">구입자 정보</h4>
+            </div>
+            <div class="modal-body">
+              <strong>계정주소</strong>: <span id="buyerAddress"> </span><br/>
+              <strong>이름</strong>: <span id="buyerName"> </span><br/>
+              <strong>나이</strong>: <span id="buyerAge"> </span><br/>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+              
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+
+          <!-- 등록하기 버튼을 위한 Modal-->
+          <div class="modal fade" tabindex="-1" role="dialog" id="registerModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">차량 정보</h4>
+                </div>
+                <div class="modal-body">
+  
+                  
+                  <input type="text" class="form-control" id="0_id" placeholder="ID"/><br/>
+                  <input type="text" class="form-control" id="0_kind" placeholder="종류"/><br/>
+                  <input type="text" class="form-control" id="0_year" placeholder="연식"/><br/>
+                  <input type="text" class="form-control" id="0_distance" placeholder="주행"/><br/>
+                  <input type="text" class="form-control" id="0_cc" placeholder="배기량"/><br/>
+                  <input type="text" class="form-control" id="0_change" placeholder="변속"/><br/>
+                  <input type="text" class="form-control" id="0_color" placeholder="색상"/><br/>
+                  <input type="text" class="form-control" id="0_fuel" placeholder="연료"/><br/>
+                  <input type="text" class="form-control" id="0_y1" placeholder="압류저당"/><br/>
+                  <input type="text" class="form-control" id="0_y2" placeholder="사고유무"/><br/>
+                  <input type="text" class="form-control" id="0_price" placeholder="가격"/><br/>
+  
+                  <strong>정비소 PDF</strong><input type="file" class="form-control" id="pdf"/><br/>
+                  <strong>서약서 PDF</strong><input type="file" class="form-control" id="contract"/><br/>
+      
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                  <button type="button" class="btn btn-primary" onclick="App.registerRealEstate(); return false;">등록</button> 
+                </div>
+  
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/utf8.js"></script>
+  </body>
+</html>

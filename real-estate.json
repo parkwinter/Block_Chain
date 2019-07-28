@@ -1,0 +1,45 @@
+[
+  {
+    "id": 0,
+    "kind1": "기아 봉고",
+    "picture": "images/bongo.jpg",
+    "year1": "2017/07",
+    "distance1": "3.058km",
+    "cc1": "2,500cc",
+    "change1": "자동",
+    "color1": "흰색",
+    "fuel1": "디젤",
+    "y11": "무",
+    "y21": "무",
+    "price": 1.23
+  },
+  {
+    "id": 1,
+    "kind1": "쉐보레 말리부",
+    "picture": "images/malibu.jpg",
+    "year1": "2016/03",
+    "distance1": "140km",
+    "cc1": "2,000cc",
+    "change1": "자동",
+    "color1": "검정",
+    "fuel1": "가솔린",
+    "y11": "무",
+    "y21": "무",
+    "price": 1.15
+  },
+  {
+    "id": 2,
+    "kind1": "기아 올뉴 카니발",
+    "picture": "images/carnival.jpg",
+    "year1": "2018/05",
+    "distance1": "112km",
+    "cc1": "2,199cc",
+    "change1": "자동",
+    "color1": "검정",
+    "fuel1": "디젤",
+    "y11": "무",
+    "y21": "무",
+    "price": 1.28
+  }
+ 
+]
